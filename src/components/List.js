@@ -1,22 +1,22 @@
 import React from "react";
+import Member from "./Member";
 
 const List = props => {
-    let memberList = [
-        { id: 1, name: "Sam" },
-        { id: 2, name: "Jake" },
-        { id: 3, name: "Ava" },
-        { id: 4, name: "Orlando" }
-    ];
+    const { list } = props;
 
       return (
-        memberList.map(member => {
-            return (
-                <>
-                <div>{ member.id }</div>
-                <h2>{ member.name }</h2>
-                </>
-            );
-        })
-      );
-}
+          <section className="member-list">
+            { list.map(member => {
+                return (
+                    <Member 
+                    key={ member.id }
+                    id={ member.id }
+                    name={ member.name } />
+                ); // End map return
+            })}
+          </section>
+
+      ); // End List return
+} // End List component
+
 export default List;

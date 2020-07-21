@@ -5,7 +5,13 @@ import List from "./components/List";
 import { Form } from "./components/Form";
 
 function App() {
-  const [ teamMembers, setTeamMembers ] = useState([]);
+  let memberList = [
+    { id: 1, name: "Sam" },
+    { id: 2, name: "Jake" },
+    { id: 3, name: "Ava" },
+    { id: 4, name: "Orlando" }
+];
+  const [ teamMembers, setTeamMembers ] = useState(memberList);
 
   return (
     <div className="App">
@@ -15,7 +21,7 @@ function App() {
       </header>
 
       <main className="app-content">
-    <List />
+    <List list={ memberList } />
       </main>
     </div>
   );
