@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import List from "./components/List";
+import { Form } from "./components/Form";
 
 function App() {
-  let memberList = [
-    { id: 1, name: "Sam" },
-    { id: 2, name: "Jake" },
-    { id: 3, name: "Ava" },
-    { id: 4, name: "Orlando" }
-  ];
-  const [ teamMembers, setTeamMembers ] = useState(memberList);
-
+  const [ teamMembers, setTeamMembers ] = useState([]);
 
   return (
     <div className="App">
@@ -20,7 +15,7 @@ function App() {
       </header>
 
       <main className="app-content">
-
+    <List />
       </main>
     </div>
   );
