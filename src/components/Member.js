@@ -6,7 +6,7 @@ const Member = props => {
     return (
         <div className="member">
                             <div>{ id }</div>
-                <h2>{ name }</h2>
+                <h4>{ name }</h4>
         </div>
     );
 }

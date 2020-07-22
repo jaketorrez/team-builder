@@ -13,7 +13,9 @@ const List = props => {
                     id={ member.id }
                     name={ member.name } />
                 ); // End map return
-            })}
+            }) // End map
+            }
+             <hr />
           </section>
 
       ); // End List return

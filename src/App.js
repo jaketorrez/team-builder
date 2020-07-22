@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import List from "./components/List";
-import { Form } from "./components/Form";
+import Form from "./components/Form";
 
 function App() {
   let memberList = [
@@ -21,7 +21,13 @@ function App() {
       </header>
 
       <main className="app-content">
+        <>
     <List list={ memberList } />
+    </>
+
+    <>
+    <Form />
+    </>
       </main>
     </div>
   );
