@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
-import { v4 as uuid } from "uuid";
 import './App.css';
-import Member from "./components/Member";
+import { v4 as uuid } from "uuid";
+import FormData from "./components/Form";
+import List from "./components/List";
 
 function App() {
+  const initialValue = { id: "", name: "", email: "", role: "" };
   let memberList = [
-    { id: uuid(), name: "Sam" },
-    { id: uuid(), name: "Jake" },
-    { id: uuid(), name: "Ava" },
-    { id: uuid(), name: "Orlando" }
+    { id: uuid(), name: "Sam", email: "sam@sam.com", role: "TL" },
+    { id: uuid(), name: "Jake", email: "jake@jake.com", role: "Student" },
+    { id: uuid(), name: "Ava", email: "ava@ava.com", role: "Student" },
+    { id: uuid(), name: "Orlando", email: "orlando@orlando.com", role: "Student" }
 ];
 
 // State variables
   const [ teamMembers, setTeamMembers ] = useState(memberList);
-  const [ memberName, setMemberName ] = useState("");
+  const [ newMember, setNewMember ] = useState(initialValue);
 
   const handleChange = event => {
-    let value = event.target.value;
-    setMemberName(value);
+    const inputName = event.target.name;
+    const inputValue = event.target.value;
+    setNewMember({ ...newMember, [inputName]: inputValue });
   }
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newMember = { id: uuid(), name: memberName };
     memberList.push(newMember);
     setTeamMembers(memberList);
-    setMemberName("");
+    setNewMember(initialValue);
   }
 
 
@@ -37,27 +39,16 @@ function App() {
 
       <main className="app-content">
         <section className="member-list">
-          { teamMembers.map(member => {
-            return (
-              <Member 
-                key={ member.id }
-                name={ member.name } />
-              ); // End map return
-            }) // End map
-          }
+          <List 
+          memberList={ teamMembers } />
           <hr />
         </section>
 
         <section className="form">
-          <form onSubmit={ event => handleSubmit(event) } >
-            <h2>Add a New Team Member</h2>
-              <label>
-                Member Name:
-                  <input type="text"
-                  onChange = { event => handleChange(event) } />
-              </label> <br />
-            <button>Submit</button>
-          </form>
+          <FormData 
+          newMember={ newMember }
+          handleChange={ handleChange} 
+          handleSubmit={ handleSubmit } />
         </section>
       </main>
     </div>
