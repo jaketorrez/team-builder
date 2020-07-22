@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import { v4 as uuid } from "uuid";
 import './App.css';
 import Member from "./components/Member";
 
 function App() {
   let memberList = [
-    { id: 1, name: "Sam" },
-    { id: 2, name: "Jake" },
-    { id: 3, name: "Ava" },
-    { id: 4, name: "Orlando" }
+    { id: uuid(), name: "Sam" },
+    { id: uuid(), name: "Jake" },
+    { id: uuid(), name: "Ava" },
+    { id: uuid(), name: "Orlando" }
 ];
 
 // State variables
@@ -18,17 +18,14 @@ function App() {
   const handleChange = event => {
     let value = event.target.value;
     setMemberName(value);
-    console.log(memberName);
   }
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newMember = {
-      
-    }
+    const newMember = { id: uuid(), name: memberName };
     memberList.push(newMember);
     setTeamMembers(memberList);
-    console.log(teamMembers);
+    setMemberName("");
   }
 
 
@@ -44,11 +41,11 @@ function App() {
             return (
               <Member 
                 key={ member.id }
-                id={ member.id }
                 name={ member.name } />
               ); // End map return
             }) // End map
           }
+          <hr />
         </section>
 
         <section className="form">
